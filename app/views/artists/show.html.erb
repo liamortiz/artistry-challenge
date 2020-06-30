@@ -1,0 +1,16 @@
+<h1><%= @artist.name %></h1>
+<p><%= @artist.age %> Years old</p>
+<p>Title: <%= @artist.title %></p>
+
+<h2>Instruments</h2>
+<ul>
+  <% @artist.instruments.each do |instrument| %>
+    <li><%= instrument.name %></li>
+  <% end %>
+</ul>
+
+<h2>Add an Instrument</h2>
+<%= form_for @artist do |f| %>
+  <%= f.collection_select :id, Instrument.all, :id, :name %>
+  <%= f.submit %>
+<% end %>
